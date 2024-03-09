@@ -137,17 +137,19 @@ Number of outliers:  1700
 Time taken (s):  0.9492652416229248
 ```
 
-### Reproduce the GIF Above 
+### Reproduce the GIF Above on Ubuntu22.04.4 
+重启进入ubuntu登陆界面，
+在用户选择和密码输入界面的右下角有一个齿轮图标，点击这个图标会弹出一个菜单选择“Ubuntu on Xorg”或仅仅标记为“Xorg”的选项。
 Run the following script:
 ```shell script
 sudo apt install cmake libeigen3-dev libboost-all-dev
-conda create -n teaser_3dsmooth python=3.6 numpy
+conda create -n teaser_3dsmooth python=3.10 numpy
 conda activate teaser_3dsmooth
-conda install -c open3d-admin open3d=0.9.0.0
+conda install -c conda-forge open3d=0.18.0
 conda install scikit-learn 
 git clone https://github.com/MIT-SPARK/TEASER-plusplus.git
 cd TEASER-plusplus && mkdir build && cd build
-cmake -DTEASERPP_PYTHON_VERSION=3.6 .. && make teaserpp_python
+cmake -DTEASERPP_PYTHON_VERSION=3.10 .. && make teaserpp_python
 cd python && pip install .
 cd ../.. && cd examples/teaser_python_3dsmooth
 python teaser_python_3dsmooth.py
